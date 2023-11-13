@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next';
 import { FC } from 'react';
 import Link from 'next/link';
 import { getCatData } from '@/services/catsApiService';
+import Image from 'next/image';
 
 type CatProps = {
   cat: CatsItem;
@@ -81,9 +82,11 @@ const CatPage: FC<CatProps> = ({ cat }) => {
         </Link>
       </div>
       <div className="mb-4 lg:mb-0">
-        <img
+        <Image
           src={cat.url}
           alt="Image of cat"
+          width={cat.width}
+          height={cat.height}
           className="object-cover w-full h-auto rounded-lg md:w-96 md:h-96"
         />
       </div>

@@ -20,7 +20,7 @@ const Switcher: React.FC<SwitcherProps> = ({
     if (index !== -1) {
       setSelectedOption(options[index]);
     }
-  }, [options]);
+  }, [options, value]);
 
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);

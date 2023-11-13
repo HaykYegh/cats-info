@@ -29,7 +29,6 @@ const SearchDetails = () => {
     [searchParams]
   );
   const handleSwitchChange = (newOption: string, name?: string) => {
-    console.log('Selected option:', newOption);
     router.push(pathname + '?' + createQueryString(name as string, newOption));
   };
 

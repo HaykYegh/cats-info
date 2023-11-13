@@ -20,9 +20,7 @@ const CatsContainer = () => {
   const size = searchParams?.get('size');
   const mime_types = searchParams?.get('mime_types');
   const order = searchParams?.get('order');
-  console.log('catsState -> ', catsState);
   const loadMoreItems = () => {
-    console.log('loadMoreItems -> mime_types ', mime_types);
     page.current = page.current + 1;
     dispatch(getCats({ size, mime_types, order, page: page.current }));
   };
@@ -35,7 +33,6 @@ const CatsContainer = () => {
 
       observer.current = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
-          console.log('entries -> ', entries);
           loadMoreItems();
         }
       });
@@ -53,12 +50,10 @@ const CatsContainer = () => {
   }, [size, mime_types, order]);
 
   const handleUploadSuccess = (data: any) => {
-    console.log('data -> ', data);
     toast.success(`${data.original_filename} uploaded successfully!`);
   };
 
   const handleUploadError = (error: any) => {
-    console.log('error -> ', error);
     toast.error(error.response.data);
   };
 
@@ -81,7 +76,7 @@ const CatsContainer = () => {
             <Link
               href={`cat/${item.id}`}
               className={styles.image_item}
-              key={index}
+              key={`${item.id}-${index}`}
               ref={index === array.length - 1 ? lastItemRef : null}
             >
               <img width={200} height={200} src={item.url} alt="cat image" />
