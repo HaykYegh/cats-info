@@ -1,13 +1,13 @@
 .search_header {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    background-color: black;
-    box-shadow: 1px 1px 1px 1px #000000;
-    justify-content: space-between;
-    margin: 5px 0 20px;
-    border-radius: 4px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: black;
+  box-shadow: 1px 1px 1px 1px #000000;
+  justify-content: space-between;
+  margin: 5px 0 20px;
+  border-radius: 4px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }

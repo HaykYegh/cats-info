@@ -1,18 +1,18 @@
-import {CatsItem} from "@/modules/Cats/store/cats/types";
-import {GetServerSideProps} from "next";
-import {FC} from "react";
-import Link from "next/link";
-import {getCatData} from "@/services/catsApiService";
+import { CatsItem } from '@/modules/Cats/store/cats/types';
+import { GetServerSideProps } from 'next';
+import { FC } from 'react';
+import Link from 'next/link';
+import { getCatData } from '@/services/catsApiService';
 
 type CatProps = {
   cat: CatsItem;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   try {
     const id = context.params?.id as string;
 
-    const {data} = await getCatData({id});
+    const { data } = await getCatData({ id });
 
     if (!data) {
       return {
@@ -55,13 +55,27 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-const CatPage:FC<CatProps> = ({ cat }) => {
+const CatPage: FC<CatProps> = ({ cat }) => {
   return (
     <div className="flex flex-col items-center justify-center p-4 gap-5">
       <div className="container mx-auto w-full flex justify-between items-center">
-        <Link className="text-lg flex flex-row items-center p-2 hover:text-gray-600 transition duration-300" href="/">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        <Link
+          className="text-lg flex flex-row items-center p-2 hover:text-gray-600 transition duration-300"
+          href="/"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
           Back to Home
         </Link>
@@ -74,12 +88,30 @@ const CatPage:FC<CatProps> = ({ cat }) => {
         />
       </div>
       <div className="flex flex-col">
-        <p className="text-md"><span className="font-semibold">Breed Name: </span>{cat.breeds?.[0]?.name ?? '-'}</p>
-        <p className="text-md"><span className="font-semibold">Width: </span>{cat.width}px</p>
-        <p className="text-md"><span className="font-semibold">Height: </span>{cat.height}px</p>
-        <p className="text-md"><span className="font-semibold">Pending: </span>{cat.pending ?? '-'}</p>
-        <p className="text-md"><span className="font-semibold">Approved: </span>{cat.approved ?? '-'}</p>
-        <p className="text-md"><span className="font-semibold">Rejected: </span>{cat.rejected ?? '-'}</p>
+        <p className="text-md">
+          <span className="font-semibold">Breed Name: </span>
+          {cat.breeds?.[0]?.name ?? '-'}
+        </p>
+        <p className="text-md">
+          <span className="font-semibold">Width: </span>
+          {cat.width}px
+        </p>
+        <p className="text-md">
+          <span className="font-semibold">Height: </span>
+          {cat.height}px
+        </p>
+        <p className="text-md">
+          <span className="font-semibold">Pending: </span>
+          {cat.pending ?? '-'}
+        </p>
+        <p className="text-md">
+          <span className="font-semibold">Approved: </span>
+          {cat.approved ?? '-'}
+        </p>
+        <p className="text-md">
+          <span className="font-semibold">Rejected: </span>
+          {cat.rejected ?? '-'}
+        </p>
       </div>
     </div>
   );

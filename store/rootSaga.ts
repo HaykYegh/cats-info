@@ -1,8 +1,6 @@
-import {all, fork} from 'redux-saga/effects';
-import watchCatsSaga from "@/modules/Cats/store/cats/sagas";
+import { all, fork } from 'redux-saga/effects';
+import watchCatsSaga from '@/modules/Cats/store/cats/sagas';
 
 export default function* rootSaga() {
-  yield all([
-    fork(watchCatsSaga),
-  ]);
+  yield all([fork(watchCatsSaga)]);
 }

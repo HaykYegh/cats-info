@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {CatsItem, ICatsState} from "@/modules/Cats/store/cats/types";
+import { CatsItem, ICatsState } from '@/modules/Cats/store/cats/types';
 
 const initialState: ICatsState = {
   data: [],
@@ -10,14 +10,20 @@ export const catsSlice = createSlice({
   name: 'catsSlice',
   initialState,
   reducers: {
-    setCatsData: (state: ICatsState, { payload }: PayloadAction<CatsItem[]>) => {
-      state.data = payload
+    setCatsData: (
+      state: ICatsState,
+      { payload }: PayloadAction<CatsItem[]>
+    ) => {
+      state.data = payload;
     },
-    addCatsData: (state: ICatsState, { payload }: PayloadAction<CatsItem[]>) => {
-      state.data = state.data.concat(payload)
+    addCatsData: (
+      state: ICatsState,
+      { payload }: PayloadAction<CatsItem[]>
+    ) => {
+      state.data = state.data.concat(payload);
     },
     setLoading: (state: ICatsState, { payload }: PayloadAction<boolean>) => {
-      state.loading = payload
+      state.loading = payload;
     },
   },
 });

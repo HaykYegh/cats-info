@@ -1,1 +1,1 @@
-export {default} from './SearchDetails'
+export { default } from './SearchDetails';

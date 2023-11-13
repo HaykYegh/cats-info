@@ -1,18 +1,23 @@
-import React, {useState, ChangeEvent, FormEvent, useRef} from 'react';
+import React, { useState, ChangeEvent, FormEvent, useRef } from 'react';
 import axios from 'axios';
-import {uploadCatImage} from "@/services/catsApiService";
-import {CatsItem} from "@/modules/Cats/store/cats/types";
-import toast from "react-hot-toast";
-import Spinner from "@/components/Spinner";
+import { uploadCatImage } from '@/services/catsApiService';
+import { CatsItem } from '@/modules/Cats/store/cats/types';
+import toast from 'react-hot-toast';
+import Spinner from '@/components/Spinner';
 
-export interface IImageUploadProps{
+export interface IImageUploadProps {
   text: string;
-  handleUploadImage: (formData: FormData) => Record<string, any>
+  handleUploadImage: (formData: FormData) => Record<string, any>;
   handleSuccess: (data: any) => void;
   handleError: (error: any) => void;
 }
 
-const ImageUpload: React.FC<IImageUploadProps> = ({text, handleUploadImage, handleSuccess, handleError}) => {
+const ImageUpload: React.FC<IImageUploadProps> = ({
+  text,
+  handleUploadImage,
+  handleSuccess,
+  handleError,
+}) => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -36,12 +41,12 @@ const ImageUpload: React.FC<IImageUploadProps> = ({text, handleUploadImage, hand
 
     try {
       setLoading(true);
-      const response = await handleUploadImage(formData)
-      handleSuccess(response.data)
+      const response = await handleUploadImage(formData);
+      handleSuccess(response.data);
     } catch (error) {
-      handleError(error)
+      handleError(error);
     } finally {
-      setFile(null)
+      setFile(null);
       setLoading(false);
       if (formRef.current) {
         formRef.current.reset();
@@ -51,7 +56,11 @@ const ImageUpload: React.FC<IImageUploadProps> = ({text, handleUploadImage, hand
 
   return (
     <div className="flex flex-col items-center justify-center p-6">
-      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-row items-center w-full max-w-sm">
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="flex flex-row items-center w-full max-w-sm"
+      >
         <input
           type="file"
           onChange={handleFileChange}
@@ -69,9 +78,11 @@ const ImageUpload: React.FC<IImageUploadProps> = ({text, handleUploadImage, hand
           className="w-52 relative px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
         >
           {text}
-          {loading && <span className="absolute right-0">
-            <Spinner/>
-          </span>}
+          {loading && (
+            <span className="absolute right-0">
+              <Spinner />
+            </span>
+          )}
         </button>
       </form>
     </div>

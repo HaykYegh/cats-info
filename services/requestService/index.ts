@@ -1,9 +1,12 @@
 import axios, { type AxiosPromise } from 'axios';
 
 import type { IRequestUrl } from './requestServiceTypes';
-import {apiKey, ContentTypes} from "@/configs";
+import { apiKey, ContentTypes } from '@/configs';
 
-export function request({ method, url, data, params, contentType }: IRequestUrl, formData?: FormData): AxiosPromise {
+export function request(
+  { method, url, data, params, contentType }: IRequestUrl,
+  formData?: FormData
+): AxiosPromise {
   if (formData) {
     return axios.post(url as string, formData, {
       headers: {
@@ -20,6 +23,6 @@ export function request({ method, url, data, params, contentType }: IRequestUrl,
       'x-api-key': apiKey,
     },
     data: contentType ?? ContentTypes.MULTIPART_FORM_DATA ? formData : data,
-    params
+    params,
   });
 }

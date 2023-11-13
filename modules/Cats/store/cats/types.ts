@@ -6,7 +6,7 @@ export interface ICatsState {
 export type CategoryItem = {
   id: number;
   name: string;
-}
+};
 
 export type CatsItem = {
   breeds: any[];
@@ -18,7 +18,7 @@ export type CatsItem = {
   pending?: number;
   approved?: number;
   rejected?: number;
-}
+};
 
 export type GetCatsPayload = {
   size?: string | string[] | null;
@@ -26,4 +26,4 @@ export type GetCatsPayload = {
   order?: string | string[] | null;
   limit?: number | null;
   page?: number | null;
-} | null
+} | null;

@@ -1,1 +1,1 @@
-export {default} from './CatsContainer'
+export { default } from './CatsContainer';
